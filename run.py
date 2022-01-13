@@ -7,7 +7,7 @@ def questions():
 
 def createAnswers(answers, correct):
     answers.append(correct)
-    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
     alphaList = alphabet.split()
     shuffledAnswers = random.sample(answers, len(answers))
 
@@ -21,7 +21,9 @@ def createAnswers(answers, correct):
 def presentQuestion(q):
     print(q["question"])
     answers = createAnswers(q["incorrectAnswers"], q["correctAnswer"])
-    print(answers)
+    for key, value in answers.items():
+        line = key + ": " + value
+        print(line)
 
 if __name__ == "__main__":
     qs = questions()
