@@ -17,18 +17,28 @@ def createAnswers(answers, correct):
         final[alphaList[i]] = answer
     return final
 
-
 def presentQuestion(q):
     print(q["question"])
     answers = createAnswers(q["incorrectAnswers"], q["correctAnswer"])
     for key, value in answers.items():
         line = key + ": " + value
         print(line)
+    chosen = input("Choose answer: ")
+    if answers[chosen.upper()] == q["correctAnswer"]:
+        print("Correct")
+        return 1
+    else:
+        print("Incorrect")
+        return 0
 
 if __name__ == "__main__":
     qs = questions()
+    total = 0
     for q in qs:
-        presentQuestion(q)
+       total += presentQuestion(q)
+    print("You scored " + str(total))
+
+
 
 
 
